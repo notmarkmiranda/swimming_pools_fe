@@ -12,10 +12,11 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:open": "export NODE_ENV=development && cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -39,10 +40,12 @@
     "@babel/core": "^7.13.14",
     "@babel/plugin-transform-modules-commonjs": "^7.13.8",
     "@babel/register": "^7.13.14",
+    "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-preset-react-app-babel-7": "^4.0.2-0",
     "chai": "^4.3.4",
     "chai-enzyme": "^1.0.0-beta.1",
     "cheerio": "^1.0.0-rc.5",
+    "cypress": "^6.8.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "mocha": "^8.3.2"
