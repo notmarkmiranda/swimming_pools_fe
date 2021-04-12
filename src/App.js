@@ -12,7 +12,8 @@ function App() {
 
   useEffect(() => {
     setAppState({ loading: true });
-    const apiUrl = `http://localhost:3000/api/v1/healthcheck`;
+
+    const apiUrl = `${process.env.REACT_APP_SP_API}/api/v1/healthcheck`;
     fetch(apiUrl)
     .then((response) => {
       response.json()
