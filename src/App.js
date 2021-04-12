@@ -1,31 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Message from './Message';
-import WithMessageLoading from './WithMessageLoading';
+import Home from './components/Home/Home';
+import Healthcheck from './components/Healthcheck/Healthcheck';
 
 function App() {
-  const MessageLoading = WithMessageLoading(Message)
-  const [appState, setAppState] = useState({
-    loading: false,
-    message: null
-  });
-
-  useEffect(() => {
-    setAppState({ loading: true });
-
-    const apiUrl = `${process.env.REACT_APP_SP_API}/api/v1/healthcheck`;
-    fetch(apiUrl)
-    .then((response) => {
-      response.json()
-        .then((result) => { 
-          setAppState({ loading: false, message: result.message })
-      })
-    })
-  }, [setAppState]);
-
   return (
-    <MessageLoading isLoading={appState.loading} message={appState.message} />
-  );
+    <div className="container">
+      <BrowserRouter>
+        <Switch>
+          <Route path="/healthcheck">
+            <Healthcheck />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </div>
+  )
 };
 
 export default App;
