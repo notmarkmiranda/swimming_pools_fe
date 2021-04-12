@@ -1,7 +1,7 @@
 describe('Health check', () => {
   it('Displays the message from the healthcheck', () => {
     cy.intercept('http://localhost:3000/api/v1/healthcheck', { fixture: "healthcheck.json"})
-    cy.visit('http://localhost:3001');
+    cy.visit('http://localhost:3001/healthcheck/');
 
     cy.get('#healthcheck-message').should(($el) => {
       expect($el).to.have.length(1)
